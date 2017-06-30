@@ -14,10 +14,7 @@ module.exports = {
 
     // MongoDB connection options
     mongo: {
-        uri: process.env.MONGODB_URI
-                || process.env.MONGOHQ_URL
-                || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME
-                || 'mongodb://localhost/soo'
+        uri: process.env.MONGODB_URI || 'mongodb://sooserver:arbulon@ds060749.mlab.com:60749/soodb'
     },
     jwt: {
         secret: 'secret',

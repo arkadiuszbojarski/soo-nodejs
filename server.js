@@ -19,7 +19,7 @@ app.set('ip', config.app.ip);
 // connect to mongoDB database ============================
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongo.uri);
-mongoose.connection.once('open', function () {
+mongoose.connection.on('connected', function () {
 
     // REST API's middleware
     app.use(bodyParser.urlencoded({extended: true}));
