@@ -25,7 +25,7 @@ module.exports = function (app) {
             return res.json(new utils.Page(utils.url(req), query.size, query.page, result.companies, result.count, 'companies'));
         });
     }).post(function (req, res, next) {
-        service.create(function (err, company) {
+        service.create(req.body, function (err, company) {
             if (err) { return next(err); }
             return res.status(201).json(utils.dto(utils.url(req), company));
         });
