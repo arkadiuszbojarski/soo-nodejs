@@ -9,7 +9,7 @@
   "main": "server.js",
   "scripts": {
     "preinstall": "npm install pm2 -g",
-    "start": "pm2 start server.js -i 4 --attach"
+    "start": "pm2 start server.js -i max --attach"
   },
   "author": "Arkadiusz Bojarski",
   "license": "MIT",
