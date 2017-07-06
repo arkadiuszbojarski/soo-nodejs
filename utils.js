@@ -7,8 +7,6 @@ function url(req) {
 
 function dto(url, item) {
     var resource = JSON.parse(JSON.stringify(item));
-    resource._id = undefined;
-    resource.__v = undefined;
     resource._links = {
         self: { href: url + '/' + item._id },
     };
