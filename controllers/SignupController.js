@@ -10,7 +10,7 @@ module.exports = function (app) {
         if (!req.body.confirm) { return next({status: 401, message: 'Would you kindly confirm password.'}); }
         if (req.body.password !== req.body.confirm) { return next({status: 401, message: 'Passwords do not match.'}); }
 
-        service.register({name: req.body.name, password: req.body.name}, function (err, user) {
+        service.register({name: req.body.name, password: req.body.password}, function (err, user) {
             if (err) { return next(err); }
             return res.status(201).json({message: 'Successfuly created account for user ' + user.name + '.'});
         });
