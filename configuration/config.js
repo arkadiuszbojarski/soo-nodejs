@@ -10,7 +10,7 @@ module.exports = {
 
     // MongoDB connection options
     mongo: {
-        uri: process.env.MONGODB_URI || 'mongodb://localhost/soo'
+        uri: 'mongodb://sooserver:arbulon@ds060749.mlab.com:60749/soodb'
     },
     jwt: {
         secret: 'secret',

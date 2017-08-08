@@ -16,8 +16,7 @@ module.exports = function (app) {
                 sort: {}
             };
 
-        if (req.query.number !== undefined) { query.search.number = new RegExp(req.query.number, 'i'); }
-        if (req.query.basis !== undefined) { query.search.basis = new RegExp(req.query.basis, 'i'); }
+        query.search = utils.query(req.query);
         query.sort[property] = req.query[property + '.dir'] || '1';
 
         service.search(query, function (err, result) {

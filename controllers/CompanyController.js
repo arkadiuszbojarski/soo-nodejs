@@ -9,15 +9,14 @@ module.exports = function (app) {
     router.use(app.passport.authenticate('jwt', options));
     router.route('/').get(function (req, res, next) {
         var property = req.query.sort || 'name',
-            query =  {
+            query = {
                 size: req.query.size !== undefined ? parseInt(req.query.size, 10) : 20,
                 page: req.query.page !== undefined ? parseInt(req.query.page, 10) : 0,
                 search: {},
                 sort: {}
             };
 
-        if (req.query.name !== undefined) { query.search.name = new RegExp(req.query.name, 'i'); }
-        if (req.query.address !== undefined) { query.search.name = new RegExp(req.query.address, 'i'); }
+        query.search = utils.query(req.query);
         query.sort[property] = req.query[property + '.dir'] || '1';
 
         service.search(query, function (err, result) {

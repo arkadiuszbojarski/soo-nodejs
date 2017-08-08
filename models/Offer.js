@@ -21,7 +21,6 @@ var OfferSchema = new Schema({
         },
         price: {type: Number},
         realization: {
-            months: {type: Number},
             days: {type: Number},
             hours: {type: Number},
             minutes: {type: Number}

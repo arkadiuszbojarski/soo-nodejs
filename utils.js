@@ -13,6 +13,32 @@ function dto(url, item) {
     return resource;
 }
 
+function expression(condition) {
+    var expression = '';
+    if (condition !== undefined) {
+            if (condition.constructor === Array) {
+                expression = '^';
+                condition.forEach(function (element) {
+                    expression += '(?=.*' + element + ')';
+                });
+                expression += '.+';
+            } else {
+                expression = condition;
+            }
+        }
+    return new RegExp(expression, 'i');
+}
+
+function query(query) {
+    var result = {};
+    for (var property in query) {
+        if (query.hasOwnProperty(property)) {
+            result[property] = expression(query[property]);
+        }
+    }
+    return result;
+}
+
 function Page(url, size, number, collection, count, name) {
     this._embedded = {};
     this._embedded[name] = [];
@@ -42,5 +68,6 @@ function Page(url, size, number, collection, count, name) {
 module.exports = {
     url: url,
     dto: dto,
+    query: query,
     Page: Page
 };
