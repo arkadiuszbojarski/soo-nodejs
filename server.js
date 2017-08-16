@@ -31,6 +31,7 @@ mongoose.connection.on('connected', function () {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Method', 'GET, PUT, POST, DELETE');
         res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        if (req.method === 'OPTIONS') { res.send(204); }
         next();
     });
 
